@@ -1,0 +1,81 @@
+.sticky {
+  display: flex;
+  position: fixed;
+  top: 0;
+  height: 100px;
+  min-width: 100%;
+  background-color: rgba(1,1,1,1);
+  color: white;
+  z-index: 1000;
+}
+
+.hamburger {
+  align-items: center;
+  display: flex;
+  position: relative;
+  background-color: transparent;
+  font-size: 3rem;
+  color: rgba(66,132,255,1);
+  padding-left: 10px;
+  padding-bottom: 7px;
+}
+
+.hamburger:hover{
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-evenly;
+  padding-top: 125px;
+  padding-left: 15%;
+  padding-right: 15%;
+  background-color: rgb(5,5,25);
+  position: absolute;
+  height: 100%;
+  overflow: scroll;
+}
+
+.table::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+/* Hide scrollbar track */
+.table::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Hide scrollbar handle */
+.table::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  height: 170px;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(1,1,5,0.7);
+  border: 3px solid rgba(66, 132, 255,.5);
+  box-shadow: 15px solid black;
+  text-decoration: none;
+  color: rgba(255,255,240,0.9);
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: box-shadow,background-color,border 0.3s ease-in, transform 0.1s ease-in-out;
+  border-radius: 15px;
+}
+.element:hover{
+  border: 2px solid rgba(66,132,255,1);
+  background-color: black;
+  box-shadow: 0 4px 6px rgba(55, 155, 255, 0.4);
+  transform: scale(1.09);
+  color: rgba(255,255,240,1);
+}
