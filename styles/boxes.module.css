@@ -5,7 +5,7 @@
   left: 0;
   height: 100px;
   min-width: 100%;
-  background-color: rgba(25,25,25,1);
+  background-color: rgba(25, 25, 25, 1);
   color: white;
   z-index: 1000;
   justify-content: space-between;
@@ -17,42 +17,48 @@
   position: relative;
   background-color: transparent;
   font-size: 3rem;
-  color: rgba(66,132,255,1);
+  color: rgba(66, 132, 255, 1);
   padding-left: 10px;
   padding-bottom: 7px;
+  padding-right: 5px;
 }
 
 .title {
   background-color: transparent;
   font-size: 2.4rem;
-  color: rgba(100,150,255,0.95);
+  color: rgba(100, 150, 255, 0.95);
   width: 660px;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: bold;
 }
-.title:hover{
+
+.title:hover {
   cursor: pointer;
 }
 
 @media (max-width: 700px) {
   .title {
     font-size: 1.2rem;
-    width: 300px;
+    width: 400px;
+    text-align: center;
   }
+
   .hamburger {
     font-size: 1.5rem;
     padding-bottom: 0px;
   }
+
   .sticky {
     height: 70px;
   }
+
   .table {
     padding-left: 2%;
     padding-right: 2%;
   }
 }
 
-.cursor{
+.cursor {
   background-color: transparent;
   animation: blink 1.2s step-end infinite;
 }
@@ -61,6 +67,7 @@
   0%, 100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -69,9 +76,12 @@
 .logo {
   background-color: transparent;
   padding-right: 10px;
+  padding-top: 5px;
+  width: 70px;
+  height: 70px;
 }
 
-.hamburger:hover{
+.hamburger:hover {
   cursor: pointer;
   transform: scale(1.03);
 }
@@ -79,12 +89,12 @@
 .table {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
   justify-content: space-between;
   padding-top: 125px;
   padding-left: 10%;
   padding-right: 10%;
-  background-color: rgb(5,5,25);
+  background-color: rgb(5, 5, 25);
   position: absolute;
   height: 100%;
   overflow: scroll;
@@ -104,25 +114,32 @@
   background-color: transparent;
 }
 
-.info{
+.info {
   position: absolute;
   right: 5px;
   top: 5px;
   color: whitesmoke;
   font-size: 1.2rem;
+  cursor: pointer;
 }
-.infographic{
+
+.infographic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   position: absolute;
   border-radius: 15px;
-  background-color: rgba(0,0,0,0.85);
+  background-color: rgba(0, 0, 0, 0.9);
   text-align: center;
   padding: 20px 5px;
   font-size: .8rem;
   font-weight: normal;
   overflow: scroll;
 }
+
 .infographic::-webkit-scrollbar {
   width: 0em;
   height: 0em;
@@ -135,32 +152,56 @@
 .infographic::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
-.label{
-  background-color: rgba(1,1,1,.7);
+
+.label {
+  background-color: rgba(1, 1, 1, .7);
   padding: 5px;
   align-self: center;
+  text-align: center;
+  width: auto;
 }
-.aboutmeelement{
+
+.projectslabel {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  background-color: rgba(25, 104, 215, 0.7);
+  border: 3px solid rgba(66, 132, 255, .5);
+  box-shadow: 15px solid black;
+  text-decoration: none;
+  color: rgba(255, 255, 240, 1);
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: box-shadow, background-color 0.3s ease-in, font-size 0.2s ease-in-out, border, transform 0.1s ease-in-out;
+  border-radius: 15px 15px 5px 5px;
+}
+
+.aboutmeelement {
+  display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 380px;
   background-size: cover;
   background-position: center;
-  background-color: rgba(1,1,5,0.7);
-  border: 3px solid rgba(66, 132, 255,.5);
+  background-color: rgba(1, 1, 5, 0.7);
+  border: 3px solid rgba(66, 132, 255, .5);
   box-shadow: 15px solid black;
   text-decoration: none;
-  color: rgba(255,255,240,1);
+  color: rgba(255, 255, 240, 1);
   font-size: 1.2rem;
   font-weight: bold;
-  transition: box-shadow,background-color 0.3s ease-in, font-size 0.2s ease-in-out, border,transform 0.1s ease-in-out;
+  transition: box-shadow, background-color 0.3s ease-in, font-size 0.2s ease-in-out, border, transform 0.1s ease-in-out;
   border-radius: 15px;
   background-image: url('../public/images/wideaboutme.JPG');
   background-size: cover;
-  background-color: rgba(1,1,1,0.5);
+  background-color: rgba(1, 1, 1, 0.5);
+  margin-bottom: 25px;
 }
+
 .aboutmeelement::before {
   content: '';
   position: absolute;
@@ -180,7 +221,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1); 
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: -1;
   border-radius: 15px;
 }
@@ -193,28 +234,65 @@
   width: 170px;
   height: 170px;
   background-image: none;
-  border: 3px solid rgba(66, 132, 255,.5);
+  border: 3px solid rgba(66, 132, 255, .5);
   box-shadow: 15px solid black;
   text-decoration: none;
-  color: rgba(255,255,240,0.9);
+  color: rgba(255, 255, 240, 0.9);
   font-size: 1.2rem;
   font-weight: bold;
-  transition: box-shadow,background-color 0.3s ease-in, border,transform 0.1s ease-in-out;
+  transition: box-shadow, background-color 0.3s ease-in, border, transform 0.1s ease-in-out;
   border-radius: 15px;
   padding: 0px;
 }
-.element:hover{
-  border: 2px solid rgba(66,132,255,1);
+
+.element:hover {
+  border: 2px solid rgba(66, 132, 255, 1);
   background-color: black;
   box-shadow: 0 4px 6px rgba(55, 155, 255, 0.4);
   transform: scale(1.09);
-  color: rgba(255,255,240,1);
+  color: rgba(255, 255, 240, 1);
 }
-.aboutmeelement:hover{
-  border: 2px solid rgba(66,132,255,1);
+
+.aboutmeelement:hover {
+  border: 2px solid rgba(66, 132, 255, 1);
   background-color: black;
   box-shadow: 0 4px 6px rgba(55, 155, 255, 0.4);
   transform: scale(1.05);
-  color: rgba(255,255,240,1);
+  color: rgba(255, 255, 240, 1);
   font-size: 1.4rem;
+}
+
+.projectslabel:hover {
+  border: 2px solid rgba(66, 132, 255, 1);
+  background-color: rgba(13, 13, 110, .9);
+  box-shadow: 0 4px 6px rgba(55, 155, 255, 0.4);
+  transform: scale(1.03);
+  color: rgba(255, 255, 240, 1);
+  font-size: 1.4rem;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  background-color: rgba(100, 150, 255, 0.9);
+  max-width: 200px;
+  width: auto;
+  height: auto;
+  top: 80px;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.dditem {
+  display: flex;
+  padding: 6px 20px 4px 10px;
+  width: 100%;
+  border: 1px solid rgba(1,1,1,0.5);
+  font-size: 1.25rem;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
 }
