@@ -1,0 +1,177 @@
+.body {
+  position: absolute;
+  background-image: url('../../public/images/mountainbackground.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+}
+
+.centerbox {
+  position: relative;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 70%;
+  background-color: rgba(1000, 1000, 1000, 0.25);
+  border-radius: 5px;
+}
+
+.loginside {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  border-right: 2px solid rgba(1000, 1000, 1000, 0.15);
+}
+
+.loginsidecover{
+  background-color: rgba(0,0,0,0.24);
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.signinside {
+  position: absolute;
+  margin-left: 50%;
+  width: 50%;
+  height: 100%;
+}
+
+.signinsidecover{
+  background-color: rgba(0,0,0,0.24);
+  position: absolute;
+  margin-left: 50%;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.namediv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+}
+
+.loginheading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 12%;
+  width: 90%;
+  height: 10%;
+  border-radius: 125px;
+}
+
+.login {
+  position: relative;
+  border: 1px solid rgba(1000, 1000, 1000, 0.2);
+  width: 75%;
+  margin-left: 12.5%;
+  margin-top: 10%;
+  height: 80%;
+  border-radius: 3px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 0px;
+  border-radius: 5px;
+  background-color: rgba(500, 500, 500, 0.7);
+  height: 60px;
+  margin-top: 40px;
+  width: 80%;
+  text-align: center;
+  color: rgba(50, 50, 500, 0.5);
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.input2 {
+  padding: 0px;
+  border-radius: 5px;
+  background-color: rgba(500, 500, 500, 0.7);
+  height: 40px;
+  margin-top: 20px;
+  width: 80%;
+  text-align: center;
+  color: rgba(50, 50, 500, 0.5);
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.input3 {
+  padding: 0px;
+  border-radius: 5px;
+  background-color: rgba(500, 500, 500, 0.7);
+  height: 40px;
+  margin: 30px 2% 0px 2%;
+  width: 37%;
+  text-align: center;
+  color: rgba(50, 50, 500, 0.5);
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.input::placeholder {
+  line-height: 60px;
+  text-align: center;
+  font-size: 1.15em;
+  font-weight: normal;
+}
+
+.input2::placeholder {
+  line-height: 60px;
+  text-align: center;
+  font-size: 1.15em;
+  font-weight: normal;
+}
+
+.input3::placeholder {
+  line-height: 60px;
+  text-align: center;
+  font-size: 1.15em;
+  font-weight: normal;
+}
+
+.yellowsigninbutton {
+  width: 80%;
+  background-color: rgba(233, 202, 9, 0.6);
+  margin: 40px;
+  border-radius: 25px;
+  height: 40px;
+  box-shadow: 0px 3px 0px rgba(50, 50, 500, 0.1);
+}
+
+.signinbutton {
+  width: 80%;
+  background-color: rgba(50, 50, 500, 0.8);
+  margin: 40px;
+  border-radius: 25px;
+  height: 40px;
+  box-shadow: 0px 3px 0px rgba(50, 50, 500, 0.1);
+}
+
+.signinbutton:hover {
+  background-color: rgba(50, 50, 500, 0.75);
+  border: 1px solid rgba(50, 50, 500, 1);
+  box-shadow: 0px 3px 0px rgba(50, 50, 500, 0.3);
+}
+
+.yellowsigninbutton:hover {
+  background-color: rgba(233, 202, 9, 0.75);
+  border: 1px solid rgba(233, 202, 9, 1);
+  box-shadow: 0px 3px 0px rgba(232, 202, 9, 0.3);
+}

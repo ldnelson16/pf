@@ -1,0 +1,17 @@
+.heading{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background: linear-gradient(
+            to right, rgba(40, 65, 142, 0.8), rgba(32, 122, 189, 0.8));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-size: 3em;
+  font-weight: bold;
+  background-clip: text;
+}
+
+.h1{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: 40px;
+}

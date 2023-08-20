@@ -28,7 +28,7 @@ var projects = [
   },
   {
     title: 'LDN Recruits',
-    link: 'link-to-project-2',
+    link: '/cfbrecruits',
     image: 'images/football.jpg',
     editdate: "8.01.2023",
     description: "CFB Recruiting Composite Builder and Recruit Data Analyzer" ,
@@ -38,7 +38,7 @@ var projects = [
   },
   {
     title: 'Planner',
-    link: '/',
+    link: '/planner',
     image: 'images/planner.jpg',
     editdate: "In progress",
     description: "Functional planner app" ,
@@ -48,7 +48,7 @@ var projects = [
   },
   {
     title: 'Word Search Creator',
-    link: '/',
+    link: '/wordsearch',
     image: 'images/wordsearch.jpg',
     editdate: "TBD",
     description: "Custom word search creator, given height, width, word theme" ,
@@ -58,7 +58,7 @@ var projects = [
   },
   {
     title: 'Chess Bot',
-    link: '/',
+    link: '/chess',
     image: 'images/chess.jpg',
     editdate: "TBD",
     description: "Chess Bot using Machine Learning" ,
