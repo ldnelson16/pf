@@ -10,7 +10,6 @@ function formatDateToMMDDYYYY(date) {
 }
 
 const currentDate = formatDateToMMDDYYYY(new Date());
-console.log("currently"+currentDate+typeof(currentDate));
 
 var projects = [
   {
@@ -32,13 +31,14 @@ var projects = [
     tools: "Available in resume",
   },
   {
-    title: 'LDN Recruits sock sock sock sock sock sock',
+    title: 'LDN Recruits',
     link: 'link-to-project-2',
     image: 'images/football.jpg',
     editdate: "8.01.2023",
     description: "CFB Recruiting Composite Builder and Recruit Data Analyzer" ,
     skills: "Front-end development, Webscraping, Python, HTML/CSS/JS",
     tools: "Next.js, React, Chromium",
+    gitlink: "https://github.com/ldnelson16/cfbscraper",
   },
   {
     title: 'Planner',
@@ -48,6 +48,7 @@ var projects = [
     description: "Functional planner app" ,
     skills: "Database management, Front-end development, HTML/CSS/JS",
     tools: "MySQL, Next.js, React",
+    gitlink: "https://github.com/ldnelson16/planner",
   },
   {
     title: 'Word Search Creator',
@@ -57,6 +58,7 @@ var projects = [
     description: "Custom word search creator, given height, width, word theme" ,
     skills: "REST APIs, C++, HTML/CSS/JS",
     tools: "TBD",
+    gitlink: "https://github.com/ldnelson16/wordsearchcreator",
   },
   {
     title: 'Chess Bot',
@@ -66,6 +68,7 @@ var projects = [
     description: "Chess Bot using Machine Learning" ,
     skills: "Machine Learning, Neural Networks, Deep Learning, Python, HTML/CSS/JS",
     tools: "PyTorch, TensorFlow",
+    gitlink: "https://github.com/ldnelson16/chess",
   },
 ];
 
@@ -88,11 +91,8 @@ export default function Boxes(){
     );
   });
   
-  const [typewritten,setType] = useState("");
+  const [typewritten,setType] = useState(type);
   
-  useEffect(() => {
-    typewrite();
-  }, []);
   async function typewrite() {
     await new Promise(resolve => setTimeout(resolve,2000));
     setCursor("");
@@ -119,7 +119,7 @@ export default function Boxes(){
         <div className={boxstyles.sticky}>
           <div onClick={()=>setDropdown(!showDropdown)} className={boxstyles.hamburger}>&#9776;</div>
           <div onClick={typewrite2} className={boxstyles.title}>{typewritten}<span className={boxstyles.cursor}>{cursor}</span></div>
-          <div className={boxstyles.logo}><img src="images/lnlogowhite.png"></img></div>
+          <a href={"/"}><div className={boxstyles.logo}><img src="images/lnlogowhite.png"></img></div></a>
         </div>
         <div key="About Me" className={boxstyles.aboutmeelement}>
           <span style={{backgroundColor: 'rgba(1,1,1,.7)',padding: '5px'}}>About Me</span>
@@ -156,6 +156,7 @@ export default function Boxes(){
                 <span style={{display: 'block',marginBottom: '5px'}}>Tools: {project.tools}</span>
               </div> : <></>}
             <div onClick={()=>infoHandleOn(project.title)} className={boxstyles.info}>&#9432;</div>
+            {(index>=2)?<a href={project.gitlink} className={boxstyles.gitinfo} target="_blank"><img src='images/ghlogoicon.png' style={{width: '22px',height:'22px'}}></img></a>:<></>}
           </div>
         ))}
       </div>

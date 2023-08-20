@@ -133,6 +133,18 @@
   cursor: pointer;
 }
 
+.gitinfo {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  color: whitesmoke;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.gitinfo:hover {
+  transform: scale(1.05);
+}
+
 .infographic {
   display: flex;
   flex-direction: column;
