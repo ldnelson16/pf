@@ -32,7 +32,7 @@ var projects = [
     tools: "Available in resume",
   },
   {
-    title: 'LDN Recruits',
+    title: 'LDN Recruits sock sock sock sock sock sock',
     link: 'link-to-project-2',
     image: 'images/football.jpg',
     editdate: "8.01.2023",
@@ -161,13 +161,13 @@ export default function Boxes(){
       </div>
       {showDropdown ? 
         <div className={boxstyles.dropdown}>
-            <a href={'pdfs/goalresume.pdf'} target="_blank" className={boxstyles.dditem}><span style={{fontSize:'1rem'}}>&#128307;</span>Resume</a>
-            <a href={'https://github.com/ldnelson16'} target="_blank" className={boxstyles.dditem}><span style={{fontSize:'1rem'}}>&#128307;</span>GitHub</a>
-            <a className={boxstyles.dditem}><span style={{fontSize:'1rem'}}>&#128307;</span>Projects</a>
+            <a href={'pdfs/goalresume.pdf'} target="_blank" className={boxstyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>Resume</a>
+            <a href={'https://github.com/ldnelson16'} target="_blank" className={boxstyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>GitHub</a>
+            <a className={boxstyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>Projects</a>
             {projectData.slice(2).map((project)=>(
-              <a href={project.link} target="_blank" style={{paddingRight:'3px'}} className={boxstyles.dditem}><span style={{fontSize:'.8rem'}}>&nbsp;&nbsp;&#128307;</span><span style={{fontSize:'1rem'}}>{project.title}</span></a>
+              <a href={project.link} target="_blank" style={{paddingRight:'3px'}} className={boxstyles.dditem}><span style={{fontSize:'.8rem', marginBottom:'auto'}}>&nbsp;&nbsp;&#128307;</span><span style={{fontSize:'1rem',marginBottom:'auto',marginTop:'auto'}}>{project.title}</span></a>
             ))}
-            <a href={'/aboutme'} target="_blank" className={boxstyles.dditem}><span style={{fontSize:'1rem'}}>&#128307;</span>About Me</a>
+            <a href={'/aboutme'} target="_blank" className={boxstyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>About Me</a>
         </div>:<></>
       }
     </>

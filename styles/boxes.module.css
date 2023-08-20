@@ -36,7 +36,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
   .title {
     font-size: 1.2rem;
     width: 400px;
@@ -53,8 +53,20 @@
   }
 
   .table {
-    padding-left: 2%;
-    padding-right: 2%;
+    padding: 125px 20% 0 20%;
+  }
+}
+
+@media (max-width: 500px) {
+  .title {
+    font-size: .9rem;
+    width: 300px;
+    text-align: center;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
   }
 }
 
@@ -89,11 +101,9 @@
 .table {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   justify-content: space-between;
-  padding-top: 125px;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding: 125px 6% 0 6%;
   background-color: rgb(5, 5, 25);
   position: absolute;
   height: 100%;
