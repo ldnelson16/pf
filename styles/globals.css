@@ -1,3 +1,24 @@
+@font-face {
+  font-family: 'typewriter';
+  src: url('../fonts/TYPEWR__.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'typewriter';
+  src: url('../fonts/TYPEWR_B.TTF') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OJ';
+  src: url('../fonts/orange\ juice\ 2.0.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 html,
 body {
   padding: 0;
@@ -15,7 +36,7 @@ a {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: ;
+  font-family: 'Typewriter';
 }
 
 img {
