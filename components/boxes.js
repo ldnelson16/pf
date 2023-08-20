@@ -16,19 +16,15 @@ var projects = [
     title: 'Resume',
     link: 'pdfs/goalresume.pdf',
     image: "images/resume.jpg",
-    editdate: currentDate,
-    description: "My Current Resume" ,
-    skills: "Available in resume",
-    tools: "Available in resume",
+    editdate: "8.20.2023",
+    description: "Recent Resume" ,
   },
   {
     title: 'GitHub',
     link: 'https://github.com/ldnelson16',
     image: "images/github.jpg",
     editdate: currentDate,
-    description: "My Current Resume" ,
-    skills: "Available in resume",
-    tools: "Available in resume",
+    description: "GitHub Profile" ,
   },
   {
     title: 'LDN Recruits',
@@ -83,7 +79,6 @@ export default function Boxes(){
     setAboutInfo(!aboutmeinfo);
   });
   const infoHandleOn = useCallback((title) => {
-    console.log(title);
     setProjectData((prevProjects) =>
       prevProjects.map((project) =>
         project.title === title ? { ...project, showDiv: !project.showDiv } : project
@@ -93,18 +88,7 @@ export default function Boxes(){
   
   const [typewritten,setType] = useState(type);
   
-  async function typewrite() {
-    await new Promise(resolve => setTimeout(resolve,2000));
-    setCursor("");
-    for(let i=0;i<type.length-1;++i){
-      setType(type.slice(0,i+1)+"|"+"\u{0020}".repeat(type.length-i));
-      await new Promise(resolve => setTimeout(resolve, 90));
-    }
-    setType(type);
-    setCursor("_");
-  }
   async function typewrite2() {
-    console.log(2);
     setCursor("");
     for(let i=0;i<type.length-1;++i){
       setType(type.slice(0,i+1)+"|"+"\u{0020}".repeat(type.length-i));
@@ -149,7 +133,11 @@ export default function Boxes(){
             <a href={project.link} target="_blank" style={{position:'absolute',left:'0',top:'0',borderRadius:'15px 0px 0px 15px',width:'140px',height:'165px',backgroundColor:'transparent'}}></a>
             <a href={project.link} target="_blank" style={{position:'absolute',left:'0',bottom:'0',borderRadius:'0px 0px 15px 15px',width:'165px',height:'140px',backgroundColor:'transparent'}}></a>
             <div className={boxstyles.label}>{project.title}</div>
-            {project.showDiv ? <div className={boxstyles.infographic}>
+            {project.showDiv && (index<2) ? <div className={boxstyles.infographic}>
+                <span style={{display: 'block',marginBottom: '5px'}}>Last Edited: {project.editdate}</span>
+                <span style={{display: 'block',marginBottom: '5px'}}>Description: {project.description}</span>
+              </div> : <></>}
+            {project.showDiv && (index>=2) ? <div className={boxstyles.infographic}>
                 <span style={{display: 'block',marginBottom: '5px'}}>Last Edited: {project.editdate}</span>
                 <span style={{display: 'block',marginBottom: '5px'}}>Description: {project.description}</span>
                 <span style={{display: 'block',marginBottom: '5px'}}>Skills: {project.skills}</span>
