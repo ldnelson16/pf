@@ -177,7 +177,7 @@
   font-weight: bold;
   transition: box-shadow, background-color 0.3s ease-in, font-size 0.2s ease-in-out, border, transform 0.1s ease-in-out;
   border-radius: 15px;
-  background-image: url('../public/images/wideaboutme.JPG');
+  background-image: url('../public/images/wideaboutme.jpg');
   background-size: cover;
   background-color: rgba(1, 1, 1, 0.5);
   margin-bottom: 25px;

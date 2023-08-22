@@ -1,4 +1,4 @@
-import cfbstyles from '../../styles/ldnrecruits/cfbhome.module.css';
+import cfbstyles from '../../styles/ldnrecruits/cfbplayertable.module.css';
 import pagestyles from '../../styles/stickynavpagesetup.module.css';
 import {useState} from 'react';
 import * as classdata from '../../data/recruitingdata.json';

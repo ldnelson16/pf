@@ -1,122 +1,113 @@
-.playerCell {
-  width: 100%;
-  border: 1px solid gray;
+.grid {
   display: grid;
-  grid-template-columns: 5fr repeat(4, .8fr) repeat(2,2fr);
-  grid-template-rows: .2fr;
+  grid-template-columns: .4fr repeat(10, 1fr);
+  grid-template-rows: .5fr repeat(9, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-color: darkgrey;
-  font-size: 11px;
-}
-
-.compositeInfo{
-  grid-area: 1/7/2/8;
-  border: 1px solid white;
-  text-align: center;
-}
-
-.headerCell {
   width: 100%;
-  border: 1px solid gray;
-  display: grid;
-  grid-template-columns: 5fr repeat(4, .8fr) repeat(2,2fr);
-  grid-template-rows: .2fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  background-color: gray;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.headerCell .playerInfo {
-  display: block;
-  text-align: center;
-}
-
-.playerInfo {
-  grid-area: 1/1/2/2;
-  border: 1px solid white;
   height: auto;
+  border: 2px solid red;
+  grid-template-areas: 
+    '. button1 button1 . button2 button2 . searchdiv searchdiv searchdiv searchdiv'
+    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
+    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
+    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
+    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
+    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
+    'div6 div6 div6 div6 div6 div5 div5 div5 div5 div5 div5'
+    'div6 div6 div6 div6 div6 div5 div5 div5 div5 div5 div5'
+    'div6 div6 div6 div6 div6 div5 div5 div5 div5 div5 div5'
+    'div6 div6 div6 div6 div6 div5 div5 div5 div5 div5 div5';
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-rows: .2fr .01fr;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-areas: 
+    'button2 button2 button2 searchdiv searchdiv'
+    'div4 div5 div6 button1 button1';
+  }
+}
+  
+.button1, .button2, .nothing, .searchdiv, .div4, .div5, .div6 {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid blue;
 }
 
-.nameInfo {
-  grid-area: 1/1/2/2;
-  padding: 1px;
-  padding-left: 5px;
-  display: flexbox;
-  flex-direction: row;
-  font-weight: bold;
-  margin-left: auto;
-  padding-right: 10px;
-}
-
-.locationInfo {
-  grid-area: 1/1/2/2;
-  padding: 1px;
-  display: flexbox;
-  flex-direction: row;
-  width: 160px;
-}
-
-.posInfo {
-  grid-area: 1/1/2/2;
-  padding: 1px;
-  display: flexbox;
-  flex-direction: row;
-  float: right;
-  width: 30px;
-  text-align: center;
-  border-right: 1px solid gray;
-}
-
-.ron3 {
-  grid-area: 1/2/2/3;
-  border: 1px solid white;
-  text-align: center;
-  padding: 2px;
-}
-
-.r247 {
-  grid-area: 1/3/2/4;
-  border: 1px solid white;
-  text-align: center;
-  padding: 2px;
-}
-
-.respn {
-  grid-area: 1/4/2/5;
-  border: 1px solid white;
-  text-align: center;
-  padding: 2px;
-}
-
-.rrivals {
-  grid-area: 1/5/2/6;
-  border: 1px solid white;
-  text-align: center;
-  padding: 2px;
-}
-
-.commitInfo {
-  grid-area: 1/6/2/7;
-  border: 1px solid white;
-  text-align: center;
-}
-
-.playerCell:hover {
-  background-color: lightgrey;
-}
-
-.playerCell div:hover {
-  background-color: grey;
-}
-
-.playerTable {
-  width: 75%;
-  border: 5px solid black;
+.button1 { 
+  grid-area: button1;
   border-radius: 10px;
-  margin-left: 5px;
+  margin: 4px;
+  background-color: rgba(250,250,250,0.6);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: left;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.button2 {
+  grid-area: button2; 
+  border-radius: 10px;
+  margin: 4px;
+  background-color: rgba(250,250,250,0.6);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.buttoncontent {
+  display: inline-block;
+  text-align: left;
+}
+.button1::-webkit-scrollbar, .button2::-webkit-scrollbar {
+  width: 0em;
+  height: 0em;
+}
+
+.button1::-webkit-scrollbar-track, .button2::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.button1::-webkit-scrollbar-thumb, .button2::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.searchdiv { 
+  grid-area: searchdiv;
+}
+.searchbar {
+  width: 90%;
+  height: 90%;
+  border-radius: 5px;
+  background-color: rgba(1,1,1,0.8);
+  border: 2px solid rgba(250,250,250,0.6);
+}
+.searchbar::placeholder {
+  text-align: center;
+}
+.div4 { 
+  grid-area: div4;
+  background-color: green;
+}
+.div5 { 
+  grid-area: div5;
+  background-color: white;
+}
+.div6 { 
+  grid-area: div6;
+  background-color: grey; 
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-rows: .3fr repeat(5,1fr);
+    grid-template-columns: repeat(5,1fr);
+    grid-template-areas: 
+    '. . . searchdiv searchdiv'
+    'div5 div5 div5 div5 div5'
+    'div5 div5 div5 div5 div5'
+    'div5 div5 div5 div5 div5'
+    'div4 div4 div4 div6 div6'
+    'div4 div4 div4 div6 div6';
+  }
 }
