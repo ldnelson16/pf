@@ -1,5 +1,6 @@
 import boxstyles from '../styles/boxes.module.css';
-import {useState,useCallback,useEffect} from 'react';
+import pagestyles from '../styles/stickynavpagesetup.module.css';
+import {useState} from 'react';
 
 function formatDateToMMDDYYYY(date) {
   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed
@@ -28,7 +29,7 @@ var projects = [
   },
   {
     title: 'LDN Recruits',
-    link: '/cfbrecruits',
+    link: '/ldnrecruits',
     image: 'images/football.jpg',
     editdate: "8.01.2023",
     description: "CFB Recruiting Composite Builder and Recruit Data Analyzer" ,
@@ -75,16 +76,16 @@ export default function Boxes(){
   const [showDropdown, setDropdown] = useState(false);
   projects.map((project)=>{project["showDiv"]=false});
   const [projectData,setProjectData] = useState(projects);
-  const aboutHandle = useCallback(() => {
+  const aboutHandle = () => {
     setAboutInfo(!aboutmeinfo);
-  });
-  const infoHandleOn = useCallback((title) => {
+  };
+  const infoHandleOn = (title) => {
     setProjectData((prevProjects) =>
       prevProjects.map((project) =>
         project.title === title ? { ...project, showDiv: !project.showDiv } : project
       )
     );
-  });
+  };
   
   const [typewritten,setType] = useState(type);
   
@@ -99,11 +100,11 @@ export default function Boxes(){
   }
   return(
     <>
-      <div className={boxstyles.table}>
-        <div className={boxstyles.sticky}>
-          <div onClick={()=>setDropdown(!showDropdown)} className={boxstyles.hamburger}>&#9776;</div>
-          <div onClick={typewrite2} className={boxstyles.title}>{typewritten}<span className={boxstyles.cursor}>{cursor}</span></div>
-          <a href={"/"}><div className={boxstyles.logo}><img src="images/lnlogowhite.png"></img></div></a>
+      <div className={pagestyles.page}>
+        <div className={pagestyles.navbar}>
+          <div onClick={()=>setDropdown(!showDropdown)} className={pagestyles.hamburger}>&#9776;</div>
+          <div onClick={typewrite2} className={pagestyles.title}>{typewritten}<span className={pagestyles.cursor}>{cursor}</span></div>
+          <a href={"/"}><div className={pagestyles.logo}><img src="images/lnlogowhite.png"></img></div></a>
         </div>
         <div key="About Me" className={boxstyles.aboutmeelement}>
           <span style={{backgroundColor: 'rgba(1,1,1,.7)',padding: '5px'}}>About Me</span>
@@ -149,14 +150,14 @@ export default function Boxes(){
         ))}
       </div>
       {showDropdown ? 
-        <div className={boxstyles.dropdown}>
-            <a href={'pdfs/goalresume.pdf'} target="_blank" className={boxstyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>Resume</a>
-            <a href={'https://github.com/ldnelson16'} target="_blank" className={boxstyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>GitHub</a>
-            <a className={boxstyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>Projects</a>
+        <div className={pagestyles.dropdown}>
+            <a href={'pdfs/goalresume.pdf'} target="_blank" className={pagestyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>Resume</a>
+            <a href={'https://github.com/ldnelson16'} target="_blank" className={pagestyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>GitHub</a>
+            <a className={pagestyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>Projects</a>
             {projectData.slice(2).map((project)=>(
-              <a href={project.link} target="_blank" style={{paddingRight:'3px'}} className={boxstyles.dditem}><span style={{fontSize:'.8rem'}}>&nbsp;&nbsp;&#128307;</span><span style={{fontSize:'1rem',marginBottom:'auto',marginTop:'auto'}}>{project.title}</span></a>
+              <a href={project.link} target="_blank" style={{paddingRight:'3px'}} className={pagestyles.dditem}><span style={{fontSize:'.8rem'}}>&nbsp;&nbsp;&#128307;</span><span style={{fontSize:'1rem',marginBottom:'auto',marginTop:'auto'}}>{project.title}</span></a>
             ))}
-            <a href={'/aboutme'} target="_blank" className={boxstyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>About Me</a>
+            <a href={'/aboutme'} target="_blank" className={pagestyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>About Me</a>
         </div>:<></>
       }
     </>

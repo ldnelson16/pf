@@ -1,0 +1,148 @@
+.navbar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100px;
+  min-width: 100%;
+  background-color: rgba(25, 25, 25, 1);
+  color: white;
+  z-index: 1000;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+  padding: 125px 6% 0 6%;
+  background-color: rgb(5, 5, 25);
+  position: absolute;
+  height: 100%;
+  overflow: scroll;
+  width: 100%;
+}
+
+.page::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+.page::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.page::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+.hamburger {
+  position: relative;
+  background-color: transparent;
+  font-size: 3rem;
+  color: rgba(66, 132, 255, 1);
+  padding-left: 10px;
+  padding-bottom: 7px;
+  padding-right: 5px;
+}
+
+.title {
+  background-color: transparent;
+  font-size: 2.4rem;
+  color: rgba(100, 150, 255, 0.95);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.title:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 750px) {
+  .title {
+    font-size: 1.2rem;
+    width: 400px;
+    text-align: center;
+  }
+
+  .hamburger {
+    font-size: 1.5rem;
+    padding-bottom: 0px;
+  }
+
+  .navbar {
+    height: 70px;
+  }
+
+  .page {
+    padding: 125px 20% 0 20%;
+  }
+}
+
+@media (max-width: 500px) {
+  .title {
+    font-size: .9rem;
+    width: 300px;
+    text-align: center;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
+  }
+}
+
+.cursor {
+  background-color: transparent;
+  animation: blink 1.2s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.logo {
+  background-color: transparent;
+  padding-right: 10px;
+  padding-top: 5px;
+  width: 70px;
+  height: 70px;
+}
+
+.hamburger:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  background-color: rgba(100, 150, 255, 0.9);
+  max-width: 200px;
+  width: auto;
+  height: auto;
+  top: 80px;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.dditem {
+  display: flex;
+  padding: 6px 20px 4px 10px;
+  width: 100%;
+  border: 1px solid rgba(1,1,1,0.5);
+  font-size: 1.25rem;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
