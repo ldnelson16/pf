@@ -18,49 +18,49 @@ export const navlinks = [
 
 export default function Cfbhome(){
 
+  const [screenSize,setScreenSize] = useState("false");
   useEffect(() => {
     const containers = [document.querySelector(`.${homestyles.button1}`),document.querySelector(`.${homestyles.button2}`)];
     const content = document.querySelector(`.${homestyles.buttoncontent}`);
 
     function adjustAlignment() {
-      if (screenSize=="computer") {
-        containers.forEach((container)=>{if (content.scrollWidth > container.clientWidth) {
-          container.style.justifyContent = 'flex-start';
-          content.style.textAlign = 'left';
-        } else {
-          container.style.justifyContent = 'center';
-          content.style.textAlign = 'center';
-        }})
-      }
+      containers.forEach((container)=>{if (screenSize=="computer" && (content.scrollWidth + 50) > container.clientWidth) {
+        console.log("in here")
+        container.style.justifyContent = 'flex-start';
+        content.style.textAlign = 'left';
+      } else if (screenSize=="computer") {
+        console.log("out here")
+        container.style.justifyContent = 'center';
+        content.style.textAlign = 'center';
+      }})
     }
 
     const handleResize = () => {
       if (window.innerWidth >= 800) {
-        setScreenSize("computer");
-        console.log("computer size");
+        setScreenSize(last=>"computer");
+        console.log("computer");
       }
       else if (window.innerWidth <= 500) {
-        setScreenSize("mobile");
-        console.log("mobile size");
+        setScreenSize(last=>"mobile");
+        console.log("mobile");
       }
       else {
-        setScreenSize("tablet");
-        console.log("tablet size");
+        setScreenSize(last=>"tablet");
+        console.log("tablet");
       }
     };
 
     window.addEventListener('resize', handleResize);
     handleResize();
     window.addEventListener('resize', adjustAlignment);
-    adjustAlignment(); // Initial adjustment
+    adjustAlignment();
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('resize', adjustAlignment);
+      window.removeEventListener('resize',handleResize);
     };
-  }, []);
+  }, [screenSize]);
 
-  const [screenSize,setScreenSize] = useState(false)
   const title = "LDN Recruits - Home"
   const [typewritten,setType] = useState(title);
   const [cursor,setCursor] = useState("_");
@@ -85,7 +85,7 @@ export default function Cfbhome(){
           <div className={homestyles.button1}><span className={homestyles.buttoncontent}>View Accurate Recruit Data</span></div>
           <div className={homestyles.button2}><span className={homestyles.buttoncontent}>Build Your Own Composite Ranking</span></div>
           <div className={homestyles.searchdiv}>
-            <input className={homestyles.searchbar} type="text" placeholder="search for a player"></input>
+            <input className={homestyles.searchbar} type="search" placeholder="search for a player . . ." pattern=".*\S.*" required></input>
           </div>
           <div className={homestyles.div4}> </div>
           <div className={homestyles.div5}>DIV5</div>
@@ -99,16 +99,14 @@ export default function Cfbhome(){
           <div className={homestyles.div5}>DIV5</div>
           <div className={homestyles.div6}> </div>
         </div>)}
-        {screenSize=="mobile" && (<div className={homestyles.grid}>
-          <div className={homestyles.button1}><span className={homestyles.buttoncontent}>View Accurate Recruit Data</span></div>
-          <div className={homestyles.button2}><span className={homestyles.buttoncontent}>Build Your Own Composite Ranking</span></div>
+        {screenSize=="mobile"?(<div className={homestyles.grid}>
           <div className={homestyles.searchdiv}>
             <input className={homestyles.searchbar} type="text" placeholder="search for a player"></input>
           </div>
           <div className={homestyles.div4}> </div>
           <div className={homestyles.div5}>DIV5</div>
           <div className={homestyles.div6}> </div>
-        </div>)}
+        </div>):<></>}
       </div>
     </>
   );

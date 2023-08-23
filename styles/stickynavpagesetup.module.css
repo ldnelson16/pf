@@ -67,13 +67,14 @@
   }
 
   .hamburger {
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding-bottom: 0px;
   }
 
   .navbar {
     height: 70px;
   }
+
 }
 
 @media (max-width: 500px) {

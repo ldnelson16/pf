@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   grid-template-columns: .4fr repeat(10, 1fr);
-  grid-template-rows: .5fr repeat(9, 1fr);
+  grid-template-rows: .6fr repeat(9, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   width: 100%;
@@ -22,11 +22,28 @@
 
 @media (max-width: 768px) {
   .grid {
-    grid-template-rows: .2fr .01fr;
+    grid-template-rows: .4fr repeat(5,1fr);
     grid-template-columns: repeat(5,1fr);
     grid-template-areas: 
-    'button2 button2 button2 searchdiv searchdiv'
-    'div4 div5 div6 button1 button1';
+    '. . searchdiv searchdiv searchdiv'
+    'div5 div5 div5 div5 div5'
+    'div5 div5 div5 div5 div5'
+    'div5 div5 div5 div5 div5'
+    'div4 div4 div4 div6 div6'
+    'div4 div4 div4 div6 div6';
+  }
+}
+
+@media (max-width: 500px) {
+  .grid {
+    border: 2px solid green;
+    grid-template-rows: .2fr repeat(3,1fr);
+    grid-template-columns: repeat(4,1fr);
+    grid-template-areas: 
+    '. searchdiv searchdiv searchdiv'
+    'div5 div5 div5 div5'
+    'div4 div4 div4 div4'
+    'div6 div6 div6 div6';
   }
 }
   
@@ -34,7 +51,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid blue;
 }
 
 .button1 { 
@@ -78,12 +94,21 @@
 .searchbar {
   width: 90%;
   height: 90%;
-  border-radius: 5px;
-  background-color: rgba(1,1,1,0.8);
-  border: 2px solid rgba(250,250,250,0.6);
+  border-radius: 45px;
+  background-color: rgba(55, 55, 55, 1);
+  outline: none;
+  border: transparent;
+  text-align: center;
+  color: rgba(120,120,120,1);
+  font-size: 1.05rem;
+  font-weight: bold;
 }
 .searchbar::placeholder {
   text-align: center;
+  font-size: 1rem;
+}
+.searchbar:focus{
+  border: 2px solid rgba(58, 105, 247, 0.5);
 }
 .div4 { 
   grid-area: div4;
@@ -98,16 +123,3 @@
   background-color: grey; 
 }
 
-@media (max-width: 768px) {
-  .grid {
-    grid-template-rows: .3fr repeat(5,1fr);
-    grid-template-columns: repeat(5,1fr);
-    grid-template-areas: 
-    '. . . searchdiv searchdiv'
-    'div5 div5 div5 div5 div5'
-    'div5 div5 div5 div5 div5'
-    'div5 div5 div5 div5 div5'
-    'div4 div4 div4 div6 div6'
-    'div4 div4 div4 div6 div6';
-  }
-}
