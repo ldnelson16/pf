@@ -9,10 +9,17 @@ import {navlinks} from '../../components/ldnrecruits/cfbhome.js';
 const PlayerDetailPage = () => {
   const router = useRouter();
   const { playerId, dateIndex, year } = router.query;
-  const name = playerdata["Class"+String(year)]["players"][playerId]["name"];
-  const city = playerdata["Class"+String(year)]["players"][playerId]["City"];
-  const state = playerdata["Class"+String(year)]["players"][playerId]["State"];
-  const position = playerdata["Class"+String(year)]["players"][playerId]["Pos"];
+  let name,citystate,position;
+  try {
+    name = playerdata["Class"+String(year)]["players"][playerId]["name"];
+    citystate = playerdata["Class"+String(year)]["players"][playerId]["City"]+", "+playerdata["Class"+String(year)]["players"][playerId]["State"];
+    position = playerdata["Class"+String(year)]["players"][playerId]["Pos"];
+  }
+  catch(err) {
+    name = "Please go back to previous page and reselect player ...";
+    citystate = "";
+    position = "";
+  }
   const title = "LDN Recruiting";
   const [typewritten,setType] = useState(title);
   const [cursor,setCursor] = useState("_");
@@ -39,7 +46,7 @@ const PlayerDetailPage = () => {
         <div className={cfbstyles.playerdemo}>
           <div className={cfbstyles.playername}>{name}</div>
           <div className={cfbstyles.playerpos}>{position}</div>
-          <div className={cfbstyles.citystate}>{city+", "+state}</div>
+          <div className={cfbstyles.citystate}>{citystate}</div>
         </div>
       </div>
     </div>
