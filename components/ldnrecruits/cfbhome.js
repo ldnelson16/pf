@@ -98,7 +98,9 @@ export default function Cfbhome(){
           <div className={homestyles.searchdiv}>
             <input className={homestyles.searchbar} type="text" placeholder="search for a player"></input>
           </div>
-          <div className={homestyles.div4}> </div>
+          <div className={homestyles.div4}>
+            <ContactForm></ContactForm>
+          </div>
           <div className={homestyles.div5}>DIV5</div>
           <div className={homestyles.div6}> </div>
         </div>)}
@@ -106,7 +108,9 @@ export default function Cfbhome(){
           <div className={homestyles.searchdiv}>
             <input className={homestyles.searchbar} type="text" placeholder="search for a player"></input>
           </div>
-          <div className={homestyles.div4}> </div>
+          <div className={homestyles.div4}>
+            <ContactForm></ContactForm>
+          </div>
           <div className={homestyles.div5}>DIV5</div>
           <div className={homestyles.div6}> </div>
         </div>):<></>}

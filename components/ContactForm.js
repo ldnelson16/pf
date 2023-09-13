@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import formstyles from '../styles/contactform.module.css';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -37,9 +38,11 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name:</label>
+    <form className={formstyles.form} onSubmit={handleSubmit}>
+      <h1 className={formstyles.title}>Submit Feedback</h1>
+      <label className={formstyles.label} htmlFor="name"><span className={formstyles.required}>*</span>Name:</label>
       <input
+        className={formstyles.input}
         type="text"
         id="name"
         name="name"
@@ -47,10 +50,10 @@ export default function ContactForm() {
         onChange={handleChange}
         required
       />
-      <br />
 
-      <label htmlFor="email">Email:</label>
+      <label className={formstyles.label} htmlFor="email"><span className={formstyles.required}>*</span>Email:</label>
       <input
+        className={formstyles.input}
         type="email"
         id="email"
         name="email"
@@ -58,10 +61,10 @@ export default function ContactForm() {
         onChange={handleChange}
         required
       />
-      <br />
 
-      <label htmlFor="subject">Subject:</label>
+      <label className={formstyles.label} htmlFor="subject"><span className={formstyles.required}>*</span>Subject:</label>
       <input
+        className={formstyles.input}
         type="text"
         id="subject"
         name="subject"
@@ -69,20 +72,20 @@ export default function ContactForm() {
         onChange={handleChange}
         required
       />
-      <br />
 
-      <label htmlFor="message">Message:</label>
-      <textarea
-        id="message"
-        name="message"
-        rows="4"
-        value={formData.message}
-        onChange={handleChange}
-        required
-      ></textarea>
-      <br />
-
-      <button type="submit">Submit</button>
+      <label className={formstyles.label} htmlFor="message"><span className={formstyles.required}>*</span>Message:</label>
+      <div className={formstyles.textarea}>
+        <textarea
+          className={formstyles.textinput}
+          id="message"
+          name="message"
+          rows="6"
+          value={formData.message}
+          onChange={handleChange}
+          required
+        ></textarea>
+        <button className={formstyles.button} type="submit">Submit</button>
+      </div>
     </form>
   );
 }

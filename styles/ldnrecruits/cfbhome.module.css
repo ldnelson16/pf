@@ -6,7 +6,6 @@
   grid-row-gap: 0px;
   width: 100%;
   height: auto;
-  border: 2px solid red;
   grid-template-areas: 
     '. button1 button1 . button2 button2 . searchdiv searchdiv searchdiv searchdiv'
     'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
@@ -112,7 +111,10 @@
 }
 .div4 { 
   grid-area: div4;
-  background-color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .div5 { 
   grid-area: div5;
