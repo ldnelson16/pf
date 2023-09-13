@@ -4,6 +4,7 @@ import homestyles from '../../styles/ldnrecruits/cfbhome.module.css';
 import playerstyles from '../../styles/ldnrecruits/cfbplayertable.module.css';
 import pagestyles from '../../styles/stickynavpagesetup.module.css';
 import {typewrite2,typewritten,setType} from '../animations.js';
+import ContactForm from '../ContactForm';
 
 export const navlinks = [
   {
@@ -87,7 +88,9 @@ export default function Cfbhome(){
           <div className={homestyles.searchdiv}>
             <input className={homestyles.searchbar} type="search" placeholder="search for a player . . ." pattern=".*\S.*" required></input>
           </div>
-          <div className={homestyles.div4}> </div>
+          <div className={homestyles.div4}>
+            <ContactForm></ContactForm>
+          </div>
           <div className={homestyles.div5}>DIV5</div>
           <div className={homestyles.div6}> </div>
         </div>)}
