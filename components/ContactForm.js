@@ -63,6 +63,7 @@ export default function ContactForm() {
         <span className={formstyles.required}>*</span>Email:
       </label>
       <input
+        placeholder="leave blank for anonymous"
         className={formstyles.input}
         type="email"
         id="email"
@@ -90,6 +91,7 @@ export default function ContactForm() {
       </label>
       <div className={formstyles.textarea}>
         <textarea
+          placeholder="maximum of 999 characters"
           className={formstyles.textinput}
           id="message"
           name="message"

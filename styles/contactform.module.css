@@ -20,6 +20,8 @@
 
 .input::placeholder {
   text-align: center;
+  color: rgba(55,55,55,0.6);
+  font-size: 12px;
 }
 
 .label {

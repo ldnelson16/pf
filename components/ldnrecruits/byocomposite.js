@@ -69,30 +69,32 @@ const HeaderCell = ({setSort}) => {
         console.log("Sorting by composite");
         setSort("Composite");
     }
-    return(
-        <div className={cfbstyles.headerCell} id="header">
-            <div className={cfbstyles.playerInfo} data-value="name" onClick={handleClick}>
-                <em>Player Info</em>
-            </div>
-            <div className={cfbstyles.ron3} data-value="ON3 Rating" onClick={handleClick}>
-                <em>ON3</em>
-            </div>
-            <div className={cfbstyles.r247} data-value="247 Rating" onClick={handleClick}>
-                <em>247</em>
-            </div>
-            <div className={cfbstyles.respn} data-value="ESPN Rating" onClick={handleClick}>
-                <em>ESPN</em>
-            </div>
-            <div className={cfbstyles.rrivals} data-value="Rivals Rating" onClick={handleClick}>
-                <em>Rivals</em>
-            </div>
-            <div className={cfbstyles.commitInfo}>
-                <em>Commit Status</em>
-            </div>
-            <div className={cfbstyles.compositeInfo} onClick={sortComposite}>
-                <em>Composite</em>
-            </div>
-        </div>
+    return (
+    <thead>
+        <tr className={cfbstyles.headerCell} id="header">
+        <th className={cfbstyles.playerInfo} data-value="name" onClick={handleClick}>
+            <em>Player Info</em>
+        </th>
+        <th className={cfbstyles.ron3} data-value="ON3 Rating" onClick={handleClick}>
+            <em>ON3</em>
+        </th>
+        <th className={cfbstyles.r247} data-value="247 Rating" onClick={handleClick}>
+            <em>247</em>
+        </th>
+        <th className={cfbstyles.respn} data-value="ESPN Rating" onClick={handleClick}>
+            <em>ESPN</em>
+        </th>
+        <th className={cfbstyles.rrivals} data-value="Rivals Rating" onClick={handleClick}>
+            <em>Rivals</em>
+        </th>
+        <th className={cfbstyles.commitInfo}>
+            <em>Commit Status</em>
+        </th>
+        <th className={cfbstyles.compositeInfo} onClick={sortComposite}>
+            <em>Composite</em>
+        </th>
+        </tr>
+    </thead>
     );
 } 
 
@@ -107,37 +109,42 @@ function calculateComposite(percentdata,ranks,mins){
 }
 
 const PlayerCell = ({data,dateindex,yearindex,percentdata,mins}) => {
-    return(
-        <div className={cfbstyles.playerCell} key={data["key"]}>
-            <div className={cfbstyles.playerInfo}>
-                <div className={cfbstyles.posInfo}>
-                    {data["Pos"]}
-                </div>
-                <div className={cfbstyles.locationInfo}>
-                    {data["City"]+", "+data["State"]}
-                </div>
-                <Link href={{ pathname: '/ldnrecruits/player', query: { playerId: data["key"], dateIndex: dateindex, year: yearindex } }}>
-                    <div className={cfbstyles.nameInfo}>{data["name"]}</div>
-                </Link>
-            </div>
-            
-            <div className={cfbstyles.ron3}>
-                {data["ON3 Rating"][dateindex]}
-            </div>
-            <div className={cfbstyles.r247}>
-                {data["247 Rating"][dateindex]}
-            </div>
-            <div className={cfbstyles.respn}>
-                {data["ESPN Rating"][dateindex]}
-            </div>
-            <div className={cfbstyles.rrivals}>
-                {data["Rivals Rating"][dateindex]}
-            </div>
-            {data["Commit Status"][dateindex]==false?<div className={cfbstyles.commitInfo}>Uncommitted</div>:data["Commit Status"][dateindex]=="No Data Yet"?<div className={cfbstyles.commitInfo}>No Data</div>:<div className={cfbstyles.commitInfo}><b>{data["Commit Status"][dateindex]}</b></div>}
-            <div className={cfbstyles.compositeInfo}>
-                {calculateComposite(percentdata,[data["ON3 Rating"][dateindex],data["247 Rating"][dateindex],data["ESPN Rating"][dateindex],data["Rivals Rating"][dateindex]],mins)}
-            </div>
+    return (
+    <tr className={cfbstyles.playerCell} key={data["key"]}>
+        <td>
+        <div className={cfbstyles.playerInfo}>
+        <div className={cfbstyles.posInfo}>{data["Pos"]}</div>
+        <div className={cfbstyles.locationInfo}>{data["City"] + ", " + data["State"]}</div>
+        <Link href={{ pathname: '/ldnrecruits/player', query: { playerId: data["key"], dateIndex: dateindex, year: yearindex } }}>
+            <div className={cfbstyles.nameInfo}>{data["name"]}</div>
+        </Link>
         </div>
+        </td>
+
+        <td className={cfbstyles.ron3}>{data["ON3 Rating"][dateindex]}</td>
+        <td className={cfbstyles.r247}>{data["247 Rating"][dateindex]}</td>
+        <td className={cfbstyles.respn}>{data["ESPN Rating"][dateindex]}</td>
+        <td className={cfbstyles.rrivals}>{data["Rivals Rating"][dateindex]}</td>
+
+        {data["Commit Status"][dateindex] === false ? (
+        <td className={cfbstyles.commitInfo}>Uncommitted</td>
+        ) : data["Commit Status"][dateindex] === "No Data Yet" ? (
+        <td className={cfbstyles.commitInfo}>No Data</td>
+        ) : (
+        <td className={cfbstyles.commitInfo}>
+            <b>{data["Commit Status"][dateindex]}</b>
+        </td>
+        )}
+
+        <td className={cfbstyles.compositeInfo}>
+        {calculateComposite(percentdata, [
+            data["ON3 Rating"][dateindex],
+            data["247 Rating"][dateindex],
+            data["ESPN Rating"][dateindex],
+            data["Rivals Rating"][dateindex],
+        ], mins)}
+        </td>
+    </tr>
     );
 };
 
@@ -151,7 +158,7 @@ function playersort(a,b,sort,value,reverse=false){
     else{return -ret}
 }
 
-const PlayerData = ({data,value,sort,percentdata,year}) => {
+const PlayerData = ({data,value,sort,percentdata,year,setSort}) => {
     //Find mins for composite processing
     var mins = [100,100,100,6.1];
     ["ON3 Rating","247 Rating","ESPN Rating","Rivals Rating"].map((item,i)=>{
@@ -166,9 +173,21 @@ const PlayerData = ({data,value,sort,percentdata,year}) => {
     console.log("% Data in PlayerData");
 
     return(
-        <>
-            {newdata.map((element)=>(<PlayerCell data={element} dateindex={value} yearindex={year} percentdata={percentdata} mins={mins}></PlayerCell>))}
-        </>
+        <table>
+            <HeaderCell setSort={setSort}></HeaderCell>
+            <tbody>
+                {newdata.map((element) => (
+                <PlayerCell
+                    data={element}
+                    dateindex={value}
+                    yearindex={year}
+                    percentdata={percentdata}
+                    mins={mins}
+                    key={element["key"]} // Make sure to add a unique key to each player row
+                ></PlayerCell>
+                ))}
+            </tbody>
+        </table>
     );
 };
 
@@ -202,8 +221,7 @@ export default function ByoTable(){
               <DatesDropdown dates={classdata["Class"+String(recclass)]["dates"]} setValue={setValue} setRecclass={setRecclass} date={classdata["Class"+String(recclass)]["dates"][value]} years={classdata["years"]}></DatesDropdown>
               <CompositeWeight percentdata={percentdata} setPercent={setPercent}></CompositeWeight>
               {console.log("DATA processing from JSON file")}
-              <HeaderCell setSort={setSort}></HeaderCell>
-              <PlayerData data={classdata["Class"+String(recclass)]["players"]} value={value} sort={sorttype} percentdata={percentdata} year={recclass}></PlayerData>
+              <PlayerData data={classdata["Class"+String(recclass)]["players"]} value={value} sort={sorttype} percentdata={percentdata} year={recclass} setSort={setSort}></PlayerData>
             </div>
           </div>
         </>
