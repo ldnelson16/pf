@@ -5,6 +5,7 @@ import playerstyles from '../../styles/ldnrecruits/cfbplayertable.module.css';
 import pagestyles from '../../styles/stickynavpagesetup.module.css';
 import {typewrite2,typewritten,setType} from '../animations.js';
 import ContactForm from '../ContactForm';
+import Link from 'next/link';
 
 export const navlinks = [
   {
@@ -24,18 +25,6 @@ export default function Cfbhome(){
     const containers = [document.querySelector(`.${homestyles.button1}`),document.querySelector(`.${homestyles.button2}`)];
     const content = document.querySelector(`.${homestyles.buttoncontent}`);
 
-    function adjustAlignment() {
-      containers.forEach((container)=>{if (screenSize=="computer" && (content.scrollWidth + 50) > container.clientWidth) {
-        console.log("in here")
-        container.style.justifyContent = 'flex-start';
-        content.style.textAlign = 'left';
-      } else if (screenSize=="computer") {
-        console.log("out here")
-        container.style.justifyContent = 'center';
-        content.style.textAlign = 'center';
-      }})
-    }
-
     const handleResize = () => {
       if (window.innerWidth >= 800) {
         setScreenSize(last=>"computer");
@@ -53,11 +42,8 @@ export default function Cfbhome(){
 
     window.addEventListener('resize', handleResize);
     handleResize();
-    window.addEventListener('resize', adjustAlignment);
-    adjustAlignment();
 
     return () => {
-      window.removeEventListener('resize', adjustAlignment);
       window.removeEventListener('resize',handleResize);
     };
   }, [screenSize]);
@@ -83,8 +69,8 @@ export default function Cfbhome(){
           </div>:<></>
         }
         {screenSize=="computer" && (<div className={homestyles.grid}>
-          <div className={homestyles.button1}><span className={homestyles.buttoncontent}>View Accurate Recruit Data</span></div>
-          <div className={homestyles.button2}><span className={homestyles.buttoncontent}>Build Your Own Composite Ranking</span></div>
+          <Link href="/ldnrecruits/recruits" className={homestyles.button1}><span className={homestyles.buttoncontent}>Recruit Data</span></Link>
+          <Link href="/ldnrecruits/byo" className={homestyles.button2}><span className={homestyles.buttoncontent}>Build a Composite Ranking</span></Link>
           <div className={homestyles.searchdiv}>
             <input className={homestyles.searchbar} type="search" placeholder="search for a player . . ." pattern=".*\S.*" required></input>
           </div>

@@ -7,16 +7,16 @@
   width: 100%;
   height: auto;
   grid-template-areas: 
-    '. button1 button1 . button2 button2 . searchdiv searchdiv searchdiv searchdiv'
-    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
-    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
-    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
-    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
-    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
+    'button1 button1 button2 button2 button2 . . searchdiv searchdiv searchdiv searchdiv'
     'div6 div6 div6 div6 div6 div5 div5 div5 div5 div5 div5'
     'div6 div6 div6 div6 div6 div5 div5 div5 div5 div5 div5'
     'div6 div6 div6 div6 div6 div5 div5 div5 div5 div5 div5'
-    'div6 div6 div6 div6 div6 div5 div5 div5 div5 div5 div5';
+    'div6 div6 div6 div6 div6 div5 div5 div5 div5 div5 div5'
+    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
+    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
+    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
+    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5'
+    'div4 div4 div4 div4 div4 div5 div5 div5 div5 div5 div5';
 }
 
 @media (max-width: 768px) {
@@ -54,26 +54,36 @@
 
 .button1 { 
   grid-area: button1;
-  border-radius: 10px;
-  margin: 4px;
-  background-color: rgba(250,250,250,0.6);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border-radius: 12px;
+  margin: 5px;
+  background-color: rgba(55, 55, 55, 1);
+  border: transparent;
   text-align: left;
   overflow-x: scroll;
   white-space: nowrap;
+  transition: background-color .4s ease;
 }
 .button2 {
   grid-area: button2; 
-  border-radius: 10px;
-  margin: 4px;
-  background-color: rgba(250,250,250,0.6);
+  border-radius: 12px;
+  margin: 5px;
+  border: transparent;
+  background-color: rgba(55, 55, 55, 1);
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   overflow-x: scroll;
   white-space: nowrap;
+  transition: background-color .4s ease;
+}
+.button1:hover,.button2:hover,.searchbar:hover {
+  border: 2px solid rgba(58, 105, 247, 0.7);
+  background-color: rgba(35,35,35,1);
 }
 .buttoncontent {
   display: inline-block;
-  text-align: left;
+  text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.4vw;
+  color: rgba(131, 136, 152, 0.9);
 }
 .button1::-webkit-scrollbar, .button2::-webkit-scrollbar {
   width: 0em;
@@ -89,9 +99,10 @@
 }
 .searchdiv { 
   grid-area: searchdiv;
+  margin: 3px;
 }
 .searchbar {
-  width: 90%;
+  width: 95%;
   height: 90%;
   border-radius: 45px;
   background-color: rgba(55, 55, 55, 1);
@@ -101,6 +112,7 @@
   color: rgba(120,120,120,1);
   font-size: 1.05rem;
   font-weight: bold;
+  transition: background-color .4s ease;
 }
 .searchbar::placeholder {
   text-align: center;
