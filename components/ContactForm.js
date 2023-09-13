@@ -28,7 +28,13 @@ export default function ContactForm() {
 
       if (response.ok) {
         console.log('Email sent successfully!');
-        // You can redirect or display a success message here
+        // Clear the form fields
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
       } else {
         console.error('Failed to send email.');
       }
@@ -40,7 +46,9 @@ export default function ContactForm() {
   return (
     <form className={formstyles.form} onSubmit={handleSubmit}>
       <h1 className={formstyles.title}>Submit Feedback</h1>
-      <label className={formstyles.label} htmlFor="name"><span className={formstyles.required}>*</span>Name:</label>
+      <label className={formstyles.label} htmlFor="name">
+        <span className={formstyles.required}>*</span>Name:
+      </label>
       <input
         className={formstyles.input}
         type="text"
@@ -51,7 +59,9 @@ export default function ContactForm() {
         required
       />
 
-      <label className={formstyles.label} htmlFor="email"><span className={formstyles.required}>*</span>Email:</label>
+      <label className={formstyles.label} htmlFor="email">
+        <span className={formstyles.required}>*</span>Email:
+      </label>
       <input
         className={formstyles.input}
         type="email"
@@ -62,7 +72,9 @@ export default function ContactForm() {
         required
       />
 
-      <label className={formstyles.label} htmlFor="subject"><span className={formstyles.required}>*</span>Subject:</label>
+      <label className={formstyles.label} htmlFor="subject">
+        <span className={formstyles.required}>*</span>Subject:
+      </label>
       <input
         className={formstyles.input}
         type="text"
@@ -73,7 +85,9 @@ export default function ContactForm() {
         required
       />
 
-      <label className={formstyles.label} htmlFor="message"><span className={formstyles.required}>*</span>Message:</label>
+      <label className={formstyles.label} htmlFor="message">
+        <span className={formstyles.required}>*</span>Message:
+      </label>
       <div className={formstyles.textarea}>
         <textarea
           className={formstyles.textinput}
@@ -84,7 +98,9 @@ export default function ContactForm() {
           onChange={handleChange}
           required
         ></textarea>
-        <button className={formstyles.button} type="submit">Submit</button>
+        <button className={formstyles.button} type="submit">
+          Submit
+        </button>
       </div>
     </form>
   );

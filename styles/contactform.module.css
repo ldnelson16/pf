@@ -5,7 +5,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: rgba(61, 45, 141, 0.5);
 }
 
 .input {
@@ -54,6 +53,15 @@
   bottom: 5%;
   position: absolute;
   border-radius: 10px;
+}
+.button:hover {
+  border: 3px solid rgba(50, 56, 209, 1);
+  background-color: rgba(217, 223, 221, 0.8);
+}
+.button:active{
+  border: 3px solid rgb(31, 34, 147);
+  background-color: rgba(217, 223, 221, 1);
+  color: rgba(29, 21, 21, 0.7);
 }
 
 .title {
