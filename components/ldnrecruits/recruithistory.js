@@ -32,44 +32,10 @@ const DatesDropdown = ({dates,setValue,setRecclass,date,years}) => {
     );
 }
 
-const CompositeWeight = ({percentdata,setPercent}) => {
-    const handlePercentages = () => {
-        console.log("Percentages submitted");
-        const {ron3,r247,respn,rrivals} = percentdata;
-        var total = Number(ron3)+Number(r247)+Number(respn)+Number(rrivals);
-        total = total.toFixed(2);
-        if(total==100){console.log("Percents Valid");}
-        else{console.log("Percents Invalid, but calculating either way");}
-    }
-    const percentChange = (event) => {
-        console.log("Percent changed");
-        const{name,value}=event.target;
-        setPercent((percentdata)=>({...percentdata,[name]:value}));
-        console.log("% Data after percentChange ");
-        console.log(percentdata);
-    }
-
-    return(
-        <>
-            <div className={cfbstyles.weightSelection}>
-                <input className={cfbstyles.weightSelector} type="number" id="ON3 Weight" name="ron3" min="0" max="100" step="0.1" placeholder="ON3" onChange={percentChange}></input>
-                <input className={cfbstyles.weightSelector} type="number" id="247 Weight" name="r247" min="0" max="100" step="0.1" placeholder="247" onChange={percentChange}></input>
-                <input className={cfbstyles.weightSelector} type="number" id="ESPN Weight" name="respn" min="0" max="100" step="0.1" placeholder="ESPN" onChange={percentChange}></input>
-                <input className={cfbstyles.weightSelector} type="number" id="Rivals Weight" name="rrivals" min="0" max="100" step="0.1" placeholder="Rivals" onChange={percentChange}></input>
-                <button className={cfbstyles.submit} onClick={handlePercentages}>Submit</button>
-            </div>
-        </>
-    );
-};
-
 const HeaderCell = ({setSort}) => {
     const handleClick = (event) => {
         console.log("Now sorting based on "+event.currentTarget.dataset.value);
         setSort(event.currentTarget.dataset.value);
-    }
-    const sortComposite = () => {
-        console.log("Sorting by composite");
-        setSort("Composite");
     }
     return (
     <thead>
@@ -91,9 +57,6 @@ const HeaderCell = ({setSort}) => {
         </th>
         <th className={cfbstyles.commitInfo}>
             <em>Commit Status</em>
-        </th>
-        <th className={cfbstyles.compositeInfo} onClick={sortComposite}>
-            <em>Composite<span style={{fontSize:"10px"}}>&#9660;</span></em>
         </th>
         </tr>
     </thead>
@@ -143,15 +106,6 @@ const PlayerCell = ({data,dateindex,yearindex,percentdata,mins}) => {
             <b>{data["Commit Status"][dateindex]}</b>
         </td>
         )}
-
-        <td className={cfbstyles.compositeInfo}>
-        {calculateComposite(percentdata, [
-            data["ON3 Rating"][dateindex],
-            data["247 Rating"][dateindex],
-            data["ESPN Rating"][dateindex],
-            data["Rivals Rating"][dateindex],
-        ], mins)}
-        </td>
     </tr>
     );
 };
@@ -174,8 +128,7 @@ const PlayerData = ({data,value,sort,percentdata,year,setSort}) => {
             if(ele[item][value]!="-"&&Number(ele[item][value])<mins[i]){mins[i]=Number(ele[item][value]);}
         })
     });
-    if(sort!="Composite"){var newdata = data.slice().sort((a,b)=>playersort(a,b,sort,value));}
-    else{var newdata=data.slice().sort((a,b)=>calculateComposite(percentdata,[b["ON3 Rating"][value],b["247 Rating"][value],b["ESPN Rating"][value],b["Rivals Rating"][value]],mins)-calculateComposite(percentdata,[a["ON3 Rating"][value],a["247 Rating"][value],a["ESPN Rating"][value],a["Rivals Rating"][value]],mins))}
+    var newdata = data.slice().sort((a,b)=>playersort(a,b,sort,value));
     newdata=newdata.filter((obj)=>obj["ON3 Rating"][value]!="-"||obj["247 Rating"][value]!="-"||obj["ESPN Rating"][value]!="-"||obj["Rivals Rating"][value]!="-");
     console.log("Sorted by "+sort);
     console.log("% Data in PlayerData");
@@ -227,7 +180,6 @@ export default function ByoTable(){
             }
             <div className={cfbstyles.playerTable}>
               <DatesDropdown dates={classdata["Class"+String(recclass)]["dates"]} setValue={setValue} setRecclass={setRecclass} date={classdata["Class"+String(recclass)]["dates"][value]} years={classdata["years"]}></DatesDropdown>
-              <CompositeWeight percentdata={percentdata} setPercent={setPercent}></CompositeWeight>
               {console.log("DATA processing from JSON file")}
               <PlayerData data={classdata["Class"+String(recclass)]["players"]} value={value} sort={sorttype} percentdata={percentdata} year={recclass} setSort={setSort}></PlayerData>
             </div>

@@ -79,9 +79,7 @@ export default function Cfbhome(){
           </div>
           <div style={{backgroundImage:"url(/images/footballfield.jpg)",backgroundSize:"cover",backgroundPosition:"center",opacity:"0.2"}} className={homestyles.div5}></div>
           <div className={homestyles.div5}><div className={homestyles.welcome}>Welcome to the Home of LDN Recruiting!</div></div>
-          <div className={homestyles.div6} style={{backgroundImage:"url(/images/lnlogowhitebig.png)",backgroundSize:"contain",backgroundPosition:"center",backgroundRepeat:"no-repeat"}}>
-            
-          </div>
+          <div className={homestyles.div6} style={{backgroundImage:"url(/images/lnlogowhitebig.png)",backgroundSize:"contain",backgroundPosition:"center",backgroundRepeat:"no-repeat"}}></div>
         </div>)}
         {screenSize=="tablet" && (<div className={homestyles.grid}>
           <div className={homestyles.searchdiv}>
@@ -90,8 +88,9 @@ export default function Cfbhome(){
           <div className={homestyles.div4}>
             <ContactForm></ContactForm>
           </div>
-          <div className={homestyles.div5}>DIV5</div>
-          <div className={homestyles.div6}> </div>
+          <div style={{backgroundImage:"url(/images/footballfield.jpg)",backgroundSize:"cover",backgroundPosition:"center",opacity:"0.2"}} className={homestyles.div5}></div>
+          <div className={homestyles.div5}><div className={homestyles.welcome}>Welcome to the Home of LDN Recruiting!</div></div>
+          <div className={homestyles.div6} style={{backgroundImage:"url(/images/lnlogowhitebig.png)",backgroundSize:"contain",backgroundPosition:"center",backgroundRepeat:"no-repeat"}}></div>
         </div>)}
         {screenSize=="mobile"?(<div className={homestyles.grid}>
           <div className={homestyles.searchdiv}>
@@ -100,8 +99,9 @@ export default function Cfbhome(){
           <div className={homestyles.div4}>
             <ContactForm></ContactForm>
           </div>
-          <div className={homestyles.div5}>DIV5</div>
-          <div className={homestyles.div6}> </div>
+          <div style={{backgroundImage:"url(/images/footballfield.jpg)",backgroundSize:"cover",backgroundPosition:"center",opacity:"0.2"}} className={homestyles.div5}></div>
+          <div className={homestyles.div5}><div className={homestyles.welcome}>Welcome to the Home of LDN Recruiting!</div></div>
+          <div className={homestyles.div6} style={{backgroundImage:"url(/images/lnlogowhitebig.png)",backgroundSize:"contain",backgroundPosition:"center",backgroundRepeat:"no-repeat"}}></div>
         </div>):<></>}
       </div>
     </>

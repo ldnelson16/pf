@@ -1,9 +1,9 @@
-import ByoTable from '../../components/ldnrecruits/byocomposite.js';
+import RecruitHistory from '../../components/ldnrecruits/recruithistory';
 
 export default function Home() {
   return (
     <>
-      <ByoTable></ByoTable>
+      <RecruitHistory></RecruitHistory>
     </>
   )
 }

@@ -35,14 +35,13 @@
 
 @media (max-width: 500px) {
   .grid {
-    border: 2px solid green;
     grid-template-rows: .2fr repeat(3,1fr);
     grid-template-columns: repeat(4,1fr);
     grid-template-areas: 
     '. searchdiv searchdiv searchdiv'
     'div5 div5 div5 div5'
-    'div4 div4 div4 div4'
-    'div6 div6 div6 div6';
+    'div6 div6 div6 div6'
+    'div4 div4 div4 div4';
   }
 }
   
@@ -147,7 +146,7 @@
   border-radius: 5px;
 }
 .welcome {
-  font-size: 4vw;
+  font-size: calc(4.5vw);
   text-align: center;
   color:rgb(52, 94, 219);
   font-family:Verdana, Geneva, Tahoma, sans-serif;
