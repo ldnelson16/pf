@@ -44,9 +44,6 @@
   font-weight: bold;
   text-align: center;
 }
-.nameInfo:hover{
-  color: blue;
-}
 
 .headerCell .playerInfo {
   display: block;
@@ -61,13 +58,17 @@
 
 .nameInfo {
   padding: 1px;
-  padding-left: 5px;
   display: flexbox;
   flex-direction: row;
   font-weight: bold;
-  margin-left: auto;
-  padding-right: 10px;
+  margin-right: 10px;
   text-align: right;
+  transition: border-color 0.3s ease;
+}
+.nameInfo:hover {
+  border-bottom: 2px solid red;
+  cursor: pointer;
+
 }
 
 .locationInfo {
