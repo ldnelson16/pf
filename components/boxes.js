@@ -55,7 +55,7 @@ var projects = [
     description: "Custom word search creator, given height, width, word theme" ,
     skills: "REST APIs, C++, HTML/CSS/JS",
     tools: "TBD",
-    gitlink: "https://github.com/ldnelson16/wordsearchcreator",
+    gitlink: "https://github.com/ldnelson16/wordsearch",
   },
   {
     title: 'Chess Bot',
