@@ -15,7 +15,7 @@ const currentDate = formatDateToMMDDYYYY(new Date());
 var projects = [
   {
     title: 'Resume',
-    link: 'pdfs/goalresume.pdf',
+    link: 'pdfs/resume.pdf',
     image: "images/resume.jpg",
     editdate: "8.20.2023",
     description: "Recent Resume" ,
@@ -51,10 +51,10 @@ var projects = [
     title: 'Word Search Creator',
     link: '/wordsearch',
     image: 'images/wordsearch.jpg',
-    editdate: "TBD",
+    editdate: "9.25.2023",
     description: "Custom word search creator, given height, width, word theme" ,
     skills: "REST APIs, C++, HTML/CSS/JS",
-    tools: "TBD",
+    tools: "C++, CMake",
     gitlink: "https://github.com/ldnelson16/wordsearch",
   },
   {
@@ -151,7 +151,7 @@ export default function Boxes(){
       </div>
       {showDropdown ? 
         <div className={pagestyles.dropdown}>
-            <a href={'pdfs/goalresume.pdf'} target="_blank" className={pagestyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>Resume</a>
+            <a href={'pdfs/resume.pdf'} target="_blank" className={pagestyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>Resume</a>
             <a href={'https://github.com/ldnelson16'} target="_blank" className={pagestyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>GitHub</a>
             <a className={pagestyles.dditem}><span style={{fontSize:'1rem', marginBottom:'auto'}}>&#128307;</span>Projects</a>
             {projectData.slice(2).map((project)=>(
