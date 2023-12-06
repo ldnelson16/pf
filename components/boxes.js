@@ -154,11 +154,11 @@ export default function Boxes(){
     const updateDimensions = () => {
       const windowWidth = window.innerWidth;
       let newWidth, newHeight;
-      if (windowWidth < 500) {
+      if (windowWidth < 650) {
         newWidth = 170;
         newHeight = 170;
       }
-      else if (windowWidth >= 500 && windowWidth <= 1000) {
+      else if (windowWidth >= 650 && windowWidth <= 1000) {
         newWidth = windowWidth/5;
         newHeight = windowWidth/5;
       }
