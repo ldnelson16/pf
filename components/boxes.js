@@ -1,6 +1,6 @@
 import boxstyles from '../styles/boxes.module.css';
 import pagestyles from '../styles/stickynavpagesetup.module.css';
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 
 function formatDateToMMDDYYYY(date) {
   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed
@@ -67,6 +67,56 @@ var projects = [
     tools: "PyTorch, TensorFlow",
     gitlink: "https://github.com/ldnelson16/chess",
   },
+  {
+    title: 'Office Hours Queue',
+    link: 'https://eecs280staff.github.io/p4-web/',
+    image: 'images/queue.png',
+    editdate: "11.14.2023",
+    description: "Office Hours Queue" ,
+    skills: "API, Doubly Linked List, C++",
+    tools: "HTTP Requests, LLDB",
+    gitlink: "https://github.com/aspatel262/p4-api",
+  },
+  {
+    title: 'The Atlas Project',
+    link: 'https://github.com/ldnelson16/atlas',
+    image: 'images/atlas.jpg',
+    editdate: "11.1.2023",
+    description: "ATLAS Project - An app with interactive GUI to optimize your semester's workload." ,
+    skills: "Webscraping, App Development",
+    tools: "TKinter, Python, Selenium",
+    gitlink: "https://github.com/ldnelson16/atlas",
+  },
+  {
+    title: 'CFB Play Analysis',
+    link: 'https://github.com/ldnelson16/cfb-machine-learning',
+    image: 'images/cfb-ml-play.jpg',
+    editdate: "12.1.2023",
+    description: "A tool which (eventually) can analyze a football play via video feed." ,
+    skills: "Computer Vision, Machine Learning, Neural Networks",
+    tools: "TensorFlow, Python",
+    gitlink: "https://github.com/ldnelson16/cfb-machine-learning",
+  },
+  {
+    title: 'Euchre',
+    link: 'https://eecs280staff.github.io/p3-euchre/',
+    image: 'images/euchre.jpg',
+    editdate: "10.16.2023",
+    description: "Euchre! Playable with human and robot players." ,
+    skills: "C++, Object Oriented Programming",
+    tools: "",
+    gitlink: "https://github.com/aspatel262/p3-euchre",
+  },
+  {
+    title: 'Piazza Post Classifier',
+    link: 'https://eecs280staff.github.io/p5-ml/',
+    image: 'images/piazza.png',
+    editdate: "12.2.2023",
+    description: "Piazza Post Classifier using a Multi-variate Bernoulli Naive Bayes Classifier" ,
+    skills: "API, Doubly Linked List, C++",
+    tools: "HTTP Requests, LLDB",
+    gitlink: "https://github.com/ldnelson16/p5-ml",
+  },
 ];
 
 export default function Boxes(){
@@ -98,6 +148,33 @@ export default function Boxes(){
     setType(type);
     setCursor("_");
   }
+  const [boxwidth, setBoxWidth] = useState(200);
+  const [boxheight, setBoxHeight] = useState(200);
+  useEffect(() => {
+    const updateDimensions = () => {
+      const windowWidth = window.innerWidth;
+      let newWidth, newHeight;
+      if (windowWidth < 500) {
+        newWidth = 180;
+        newHeight = 180;
+      }
+      else if (windowWidth >= 500 && windowWidth <= 1000) {
+        newWidth = windowWidth/5;
+        newHeight = windowWidth/5;
+      }
+      else {
+        newWidth = windowWidth/8+50;
+        newHeight = windowWidth/8+30;
+      }
+      setBoxWidth(newWidth);
+      setBoxHeight(newHeight);
+    };
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => {
+      window.removeEventListener('resize', updateDimensions);
+    };
+  }, []);
   return(
     <>
       <div className={pagestyles.page}>
@@ -119,6 +196,7 @@ export default function Boxes(){
         <a key="Projects" className={boxstyles.projectslabel}>
           <u>Projects</u>
         </a>
+        <div className={boxstyles.boxdiv}>
         {projectData.map((project, index) => (
           <div
             key={index}
@@ -128,7 +206,9 @@ export default function Boxes(){
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
-              position:'relative'
+              position:'relative',
+              width: boxwidth,
+              height: boxheight,
             }}
           > 
             <a href={project.link} target="_blank" style={{position:'absolute',left:'0',top:'0',borderRadius:'15px 0px 0px 15px',width:'140px',height:'165px',backgroundColor:'transparent'}}></a>
@@ -148,6 +228,7 @@ export default function Boxes(){
             {(index>=2)?<a href={project.gitlink} className={boxstyles.gitinfo} target="_blank"><img src='images/ghlogoicon.png' style={{width: '22px',height:'22px'}}></img></a>:<></>}
           </div>
         ))}
+        </div>
       </div>
       {showDropdown ? 
         <div className={pagestyles.dropdown}>
