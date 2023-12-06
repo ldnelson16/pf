@@ -1,7 +1,7 @@
 import aboutmestyles from '../styles/aboutme.module.css'
 import pagestyles from '../styles/stickynavpagesetup.module.css';
 import { typewrite2 } from './animations';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 function formatDateToMMDDYYYY(date) {
   const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-indexed
@@ -127,6 +127,25 @@ export default function AboutMe() {
   const [showDropdown, setDropdown] = useState(false);
   projects.map((project)=>{project["showDiv"]=false});
   const [projectData,setProjectData] = useState(projects);
+  const [fontsize, setFontSize] = useState(18);
+  useEffect(() => {
+    const updateDimensions = () => {
+      const windowWidth = window.innerWidth;
+      let newfontsize;
+      if (windowWidth < 700) {
+        newfontsize = 13;
+      }
+      else {
+        newfontsize = 18;
+      }
+      setFontSize(newfontsize);
+    };
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => {
+      window.removeEventListener('resize', updateDimensions);
+    };
+  }, []);
   return (
     <>
       <div className={pagestyles.page}>
@@ -135,8 +154,26 @@ export default function AboutMe() {
           <div onClick={()=>typewrite2(title,setType,setCursor)} className={pagestyles.title}>{typewritten}<span className={pagestyles.cursor}>{cursor}</span></div>
           <a href={"/"}><div className={pagestyles.logo}><img src="images/lnlogowhite.png"></img></div></a>
         </div>
-        <div className={aboutmestyles.aboutmediv}>
-
+        <div className={aboutmestyles.biggerdiv}>
+          <div className={aboutmestyles.aboutmediv}>
+            <div className={aboutmestyles.layer}></div>
+            <div className={aboutmestyles.layer}>
+              <div className={aboutmestyles.big} style={{fontSize: fontsize,marginRight:'1%'}}>
+                Hello! I'm Luke Nelson, and I'm on a journey to become a software engineer, specifically focusing on machine learning and low-level operating system development. Currently enrolled in the Computer Science program at the University of Michigan, I'm immersing myself in the fundamental aspects of software development. Beyond the classroom, I actively contribute to project teams and technology clubs (found below), showcasing my prowess in coding languages such as Python and C++, and my skill in backend programming as well as front-end development. Whether tinkering with machine learning frameworks like TensorFlow or navigating the complexities of intricate projects, I love the challenges inherent in this field. Looking ahead, I'm actively seeking an internship this summer to further hone my skills. My goal is to apply my technical know-how to real-world projects, where I can actively contribute to the latest developments in the software industry. Passionate about machine learning and operating systems, I'm eager to bring my technological expertise to the forefront and make meaningful contributions to your team.
+              </div>
+              <div className={aboutmestyles.small} style={{backgroundImage: 'url(images/aboutmeimg1.jpg)',backgroundSize: 'cover',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',position:'relative',height: 'auto',}}></div>
+            </div>
+            <div className={aboutmestyles.layer}>
+              <img className={aboutmestyles.small} style={{backgroundImage: 'url(images/aboutmeimg2.jpg)',backgroundSize: 'cover',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',position:'relative',height: 'auto',}}></img>
+              <div className={aboutmestyles.big} style={{fontSize: fontsize,marginLeft:'1%'}}>
+                I'm a Computer Science student at the University of Michigan, anticipating graduation in May 2025. I currently maintain a 4.00/4.00 GPA, my coursework spans Data Structures, Algorithms in Python/C++, and MATLAB. Proficient in C++, Python, JavaScript, and more, I enjoy solving complex problems through algorithmic thinking. In the data realm, I'm skilled in Python for intricate data analysis, machine learning, and natural language processing. My GitHub (github.com/ldnelson16) showcases diverse projects, including ventures into computer vision, webscraping, software development, and more. I bring a strong foundation in front-end development, specializing in React/Next.js, and a knack for building high-performance software solutions in C and C++. Currently, as a Software Engineer and Data Sub-Team Programmer at SPARK Electric Racing, I'm designing and programming a comprehensive diagnostic and data display system for our electric motorcycle. Simultaneously, at CANTOR - Coding and Trading Club, I'm a Natural Language Processing Team Programmer, applying advanced techniques to extract insights from financial news. I design user-friendly interfaces and deploy tools for enhanced decision-making in diverse financial markets according to sentiment processed from Twitter post trends.
+              </div>
+            </div>
+            <div className={aboutmestyles.layer}>
+              <div className={aboutmestyles.big} style={{fontSize: fontsize,marginRight:'1%'}}>Beyond the coding hustle, I'm just a regular guy with a mix of interests. I'm a proud supporter of University of Michigan athletics — you can catch me at all the games. I also enjoy running and reading in my quiet time. Logic puzzles keep my brain ticking, and I find them very satisfying. Outside of all that, I like a bit of friendly competition playing sports. Whether it's shooting hoops or throwing a ball around, it's all in good fun. Outside of that, I'm spending time with my girlfriend and a good dog. They're my go-to squad for winding down after a long day</div>
+              <div className={aboutmestyles.small} style={{backgroundImage: 'url(images/aboutmeimg3.png)',backgroundSize: 'cover',backgroundPosition: 'center',backgroundRepeat: 'no-repeat',position:'relative',height: 'auto',}}></div>
+            </div>
+          </div>
         </div>
       </div>
       {showDropdown ? 
