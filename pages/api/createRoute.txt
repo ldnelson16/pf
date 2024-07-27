@@ -1,0 +1,154 @@
+class PriorityQueue {
+  constructor() {
+    this.queue = [];
+  }
+
+  enqueue(item) {
+    this.queue.push({ item });
+    this.queue.sort((a, b) => a.distance - b.distance);
+  }
+
+  dequeue() {
+    return this.queue.shift();
+  }
+
+  isEmpty() {
+    return this.queue.length === 0;
+  }
+}
+
+class Location {
+  constructor(xy) {
+    if (typeof(xy)=="string") {
+      this.x = parseFloat(xy.split(',')[0].trim());
+      this.y = parseFloat(xy.split(',')[1].trim());
+    }
+    else {
+      // typeof == dot object
+      const dot = xy;
+      this.x = parseFloat(dot.x.toFixed(4));
+      this.y = parseFloat(dot.y.toFixed(4));
+    }
+  }
+  equals(other_loc) {
+    if (Math.abs(other_loc.x - this.x) < 0.001 && Math.abs(other_loc.y - this.y) < 0.001) {
+      return true;
+    }
+    return false;
+  }
+}
+
+class Path {
+  constructor(start,end) {
+    this.start = start;
+    this.end = end;
+  }
+  add(location) {
+    this.locs.push(location);
+  }
+  contains(location) {
+    for (const loc of this.locs) {
+      if (loc.equals(location)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  distance() {
+    return Math.sqrt(Math.pow(this.start.x-this.end.x,2)+Math.pow(this.start.y-this.end.y,2));
+  }
+}
+
+class Route {
+  constructor(start,end) {
+    this.start = start;
+    this.paths = []
+    this.end = end;
+    this.distance = 0;
+  }
+  add(path) {
+    this.paths.push(path);
+    this.distance += path.distance();
+  }
+}
+
+findShortestRoute = (start,end,dests) => {
+  const pq = new PriorityQueue();
+
+  // ++++++++++++++++++++++++++++++++++
+  // Create initial routes from start
+  for (let i=0;i<dests.length; ++i) {
+    if (!dests[i].equals(start)) {
+      var route = new Route(start,end);
+      route.add(new Path(start,dests[i]))
+      pq.enqueue(route)
+    }
+  }
+  // Iterate through pq going with most effective until its empty or found
+  while (!pq.empty()) {
+    var currentRoute = pq.dequeue();
+    var currentLocation = currentRoute.paths[currentRoute.paths.length-1].end;
+
+    // Check if the current location is the goal destination
+    if (currentLocation,equals(end)) {
+      return currentRoute;  // Found the shortest path, return
+    }
+
+    // Explore all neighbors from currentLocation (not already in route)
+    for (Path& neighborPath : currentLocation->paths) {
+      // make sure next location not already in currentRoute
+      if (currentRoute.contains(neighborPath.dest)) {
+        continue;
+      }
+      // Create a new route
+      Route newRoute = currentRoute;
+      newRoute += Route({ &neighborPath });
+
+      // add newRoute to pq
+      openSet.push(newRoute);
+    }
+  }
+
+  // No path found
+  return Route({});
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  for (const dest of dests) {
+    if (!this.contains(dest)) {
+      const distance = Math.sqrt(Math.pow((this.locs[this.locs.length-1].x-dest.x),2) + Math.pow((this.locs[this.locs.length-1].y-dest.y),2));
+      console.log(distance);
+      pq.enqueue(dest,distance);
+    }
+  }
+  const nextloc = pq.dequeue();
+
+  // Check if the current location is the goal
+  if (nextloc.equals(end)) {
+    return bestPath;  // Found the shortest path
+  }
+
+  // Explore neighbors
+  for (Path& neighborPath : currentLocation->paths) {
+    // make sure next location not already in currentRoute
+    if (currentRoute.contains(neighborPath.dest)) {
+      continue;
+    }
+    // Create a new route
+    Route newRoute = currentRoute;
+    newRoute += Route({ &neighborPath });
+
+    // add newRoute to pq
+    openSet.push(newRoute);
+  }
+}
+
+export const getRoute = async (dots,startdot,enddot) => {
+  const start = new Location(startdot);
+  const end = new Location(enddot);
+  var dests = [];
+  for (const d of dots) {
+    dests.push(new Location(d));
+  }
+
+  const route = findShortestRoute(start,end);
+  path.findOptimal(dests);
+};
