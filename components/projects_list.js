@@ -31,7 +31,7 @@ export const projects = [
   },
   {
     title: 'RTL Four Function Calculator',
-    link: 'https://drive.google.com/file/d/1dkuEB6zfRnklKqDO6hQBnfEHLxd6buBl/view?usp=sharing',
+    link: 'https://docs.google.com/presentation/d/13kpFkyWuagAgo3qFN8tF8kSYWFDJ42nk0yLM8EflGqo/edit?usp=sharing',
     image: 'images/calculator.png',
     editdate: "3.29.2024",
     description: "RTL design of four function calculator and synthesis onto FPGA board (code private for now, link shows overhead design of project)." ,
